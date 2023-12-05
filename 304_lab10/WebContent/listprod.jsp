@@ -46,7 +46,7 @@ out.println("<table><tr><td></td><th>Product Name</th><th>Price</th></tr>");
 
 while (rst.next()) {
 String e = rst.getString(1);
-e = e.replace("'", "");
+
 out.println("<tr><td><a href='addcart.jsp?id="+rst.getInt(3)+"&name="+e+"&price="+rst.getDouble(2)+"'>Add to Cart</a></td>" +
            "<td><a href='product.jsp?id="+rst.getInt(3)+"'><font color='#FFA000'>"+rst.getString(1)+"</font></a></td><td>"+currFormat.format(rst.getDouble(2))+"</td></tr>");
 }

@@ -29,14 +29,22 @@ HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Obje
 // Make connection
 try ( Connection con = DriverManager.getConnection(url, uid, pw); )
 {
+	int count = 0;
 	String sql2 = "Select customerId, password from customer";
 	PreparedStatement pstmt2 = con.prepareStatement(sql2);
 	ResultSet rst2 = pstmt2.executeQuery();
 	boolean inDatabase = false;
 	boolean valid = true;		
 	boolean passwordValid = false;
-	
+	for (int i = 0; i < custId.length(); i++)
+			if (!Character.isDigit(custId.charAt(i))) {
+				valid = false;
+				out.println("<H1>Your customer ID is invalid!</H1>");
+				break;
+			}
+ if (valid) {
 	while (rst2.next()) {
+		
 		
 		if (rst2.getInt(1) == Integer.parseInt(custId)) {
 			inDatabase = true;
@@ -67,6 +75,7 @@ try ( Connection con = DriverManager.getConnection(url, uid, pw); )
 	if (productList == null) {
 		out.println("<H1>Your shopping cart is empty!</H1>");
 		valid = false; }
+	}
 if (valid && passwordValid) {
 	count++;
 // Save order information to database

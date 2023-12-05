@@ -18,27 +18,27 @@
 try ( Connection con = DriverManager.getConnection(url, uid, pw); )
 {
 String productId = request.getParameter("id");
-String sql = "select productPrice, productName from product where productId = ?";
+String sql = "select productPrice, productName, productDesc from product where productId = ?";
 PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setString(1, productId);
 ResultSet rst = pstmt.executeQuery();
 NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 String name = "";
 Double price = 0.0;
+String desc = "";
 while (rst.next()) {
     name = rst.getString(2);
     price = rst.getDouble(1);
+    desc = rst.getString(3);
     out.print("<h2>" + name + "</h2>");
     out.print("<table><tr>");
-    out.print("<th>Id</th><td>"+productId+"</td></tr><tr><th>Price</th><td>"+currFormat.format(price)+"</td></tr>");
+    out.print("<th>Id</th><td>"+productId+"</td></tr><tr><th>Price</th><td>"+currFormat.format(price)+"</td></tr><tr><th>Description</th><td>"+desc+"</td></tr>");
 }
 
 // TODO: If there is a productImageURL, display using IMG tag
-if (Integer.parseInt(productId) < 6) {
-out.print("<img src='img/"+productId+".jpg'>");
-if (productId.equals("1")) 
-    out.print("<img src='displayImage.jsp?id="+productId+"'>");
-}
+if (Integer.parseInt(productId) < 30) 
+    out.print("<img src='img/Capture"+productId+".PNG'>");
+
 out.print("</table>");	
 // TODO: Retrieve any image stored directly in database. Note: Call displayImage.jsp with product id as parameter.
 		
