@@ -6,7 +6,7 @@
 <body>
 
 
-// TODO: Include files auth.jsp and jdbc.jsp
+
 <%@ include file="jdbc.jsp" %>
 <%@ include file="auth.jsp" %>
 
@@ -24,9 +24,15 @@ out.print("<table border = '1'><tr><th>Order Date</th><th>Total Order Amount</th
 while (rst.next()) {
     out.print("<tr><td>"+rst.getString(2)+"</td><td>"+rst.getDouble(1)+"</td></tr>");
 }
+out.print("</table>");
 
-rst.next();
-while (rst.next()) {
+out.print("<h2>All customers</h2>");
+String sql2 = "select firstName, lastName, customerId from customer";
+PreparedStatement pstmt2 = con.prepareStatement(sql2);
+ResultSet rst2 = pstmt2.executeQuery();
+out.print("<table border = '1'><tr><th>Name</th><th>Customer ID</th></tr>");
+while (rst2.next()) {
+    out.print("<tr><td>"+rst2.getString(1)+ " " + rst2.getString(2)+"</td><td>"+rst2.getInt(3)+"</td></tr>");
 
 }
 out.print("</table>");

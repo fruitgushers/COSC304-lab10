@@ -11,13 +11,30 @@
 
 <h1>Search for the products you want to buy:</h1>
 
-<form method="get" action="listprod.jsp">
+<form method="get" action="listprod.jsp" id = "form">
 <input type="text" name="productName" size="50">
 <input type="submit" value="Submit"><input type="reset" value="Reset"> (Leave blank for all products)
+<br><label for="category">Search by category</label>
+<select name="category" id="category" form="form">
+						<option value="0">No Category</option>
+						<option value="1">Milk</option>
+						<option value="2">Dark</option>
+						<option value="3">White</option>
+						<option value="4">Nuts</option>
+						<option value="5">Semisweet</option>
+						<option value="6">Drink</option>
+						<option value="7">Unsweetened</option>
+						<option value="8">Cocoa Powder</option>
+					  </select>
 </form>
 
 <% // Get product name to search for
 String name = request.getParameter("productName");
+String category =  request.getParameter("category");
+int categoryId = 0;
+if (category == null)
+	category = "0";
+categoryId = Integer.parseInt(category); 
 		
 //Note: Forces loading of SQL Server driver
 try
@@ -36,12 +53,18 @@ catch (java.lang.ClassNotFoundException e)
 try ( Connection con = DriverManager.getConnection(url, uid, pw); )
 {
 // Print out the ResultSet
+
 String sql = "select productName, productPrice, productId from product where productName like ?";
+if (categoryId != 0)
+	sql += " and categoryId = ?";
 
 PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setString(1, "%" + name + "%");
+if (categoryId != 0)
+	pstmt.setInt(2, categoryId);
 ResultSet rst = pstmt.executeQuery();
 NumberFormat currFormat = NumberFormat.getCurrencyInstance();
+
 out.println("<table><tr><td></td><th>Product Name</th><th>Price</th></tr>");
 
 while (rst.next()) {
