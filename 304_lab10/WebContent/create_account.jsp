@@ -38,47 +38,47 @@
 <form name="accountForm" method="get" action="create_account.jsp" onsubmit="return validateForm()">
 <h3 align="left">Enter your first name</h3>
 <form method="get" action="create_account.jsp">
-<input type="text" name="firstName" size="40">
+<input type="text" name="firstName" size="40" required>
 
 <h3 align="left">Enter your last name</h3>
 <form method="get" action="create_account.jsp">
-<input type="text" name="lastName" size="40">
+<input type="text" name="lastName" size="40" required>
 
 <h3 align="left">Enter your email</h3>
 <form method="get" action="create_account.jsp">
-<input type="email" name="email" size="50">
+<input type="email" name="email" size="50" required>
 
 <h3 align="left">Enter your phone number</h3>
 <form method="get" action="create_account.jsp">
-<input type="tel" name="phonenum" size="20">
+<input type="tel" name="phonenum" size="20" required>
 
 <h3 align="left">Enter your address</h3>
 <form method="get" action="create_account.jsp">
-<input type="text" name="address" size="50">
+<input type="text" name="address" size="50" required>
 
 <h3 align="left">Enter the city</h3>
 <form method="get" action="create_account.jsp">
-<input type="text" name="city" size="40">
+<input type="text" name="city" size="40" required>
 
 <h3 align="left">Enter your state</h3>
 <form method="get" action="create_account.jsp">
-<input type="text" name="state" size="20">
+<input type="text" name="state" size="20" required>
 
 <h3 align="left">Enter your poatal code</h3>
 <form method="get" action="create_account.jsp">
-<input type="text" name="postalCode" size="20">
+<input type="text" name="postalCode" size="20" required>
 
 <h3 align="left">Enter the country</h3>
 <form method="get" action="create_account.jsp">
-<input type="text" name="country" size="40">
+<input type="text" name="country" size="40" required>
 
 <h3 align="left">Enter your user ID</h3>
 <form method="get" action="create_account.jsp">
-<input type="text" name="userid" size="20">
+<input type="text" name="userid" size="20" required>
 
 <h3 align="left;;">Enter your password</h3>
 <form method="get" action="create_account.jsp">
-<input type="password" name="password" size="30">
+<input type="password" name="password" size="30" required>
 
 <br>
 <br>
