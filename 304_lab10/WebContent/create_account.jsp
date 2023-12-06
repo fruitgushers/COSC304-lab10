@@ -13,7 +13,29 @@
 <title>account</title>
 </head>
 <body>
+<script>
+        function validateForm() {
+            var firstName = document.forms["accountForm"]["firstName"].value;
+            var lastName = document.forms["accountForm"]["lastName"].value;
 
+            // Regular expression to match digits
+            var digitPattern = /\d/;
+
+            if (digitPattern.test(firstName)) {
+                alert("First name should not contain digits.");
+                return false;
+            }
+
+            if (digitPattern.test(lastName)) {
+                alert("Last name should not contain digits.");
+                return false;
+            }
+
+            return true; // Only returns true if both validations pass
+        }
+</script>
+
+<form name="accountForm" method="get" action="create_account.jsp" onsubmit="return validateForm()">
 <h3 align="left">Enter your first name</h3>
 <form method="get" action="create_account.jsp">
 <input type="text" name="firstName" size="40">
@@ -24,11 +46,11 @@
 
 <h3 align="left">Enter your email</h3>
 <form method="get" action="create_account.jsp">
-<input type="text" name="email" size="50">
+<input type="email" name="email" size="50">
 
 <h3 align="left">Enter your phone number</h3>
 <form method="get" action="create_account.jsp">
-<input type="text" name="phonenum" size="20">
+<input type="tel" name="phonenum" size="20">
 
 <h3 align="left">Enter your address</h3>
 <form method="get" action="create_account.jsp">
@@ -77,6 +99,8 @@ String Userid = request.getParameter("userid");
 String Password = request.getParameter("password");
 
 //String userName = (String) session.getAttribute("authenticatedUser");
+
+
 try ( Connection con = DriverManager.getConnection(url, uid, pw); ){
 	String sql = "INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	PreparedStatement pstmt = con.prepareStatement(sql);
