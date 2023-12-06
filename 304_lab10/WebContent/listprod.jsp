@@ -65,13 +65,14 @@ if (categoryId != 0)
 ResultSet rst = pstmt.executeQuery();
 NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 
-out.println("<table><tr><td></td><th>Product Name</th><th>Price</th></tr>");
+out.println("<table><tr><td></td><th>Product Name</th><th>Price</th><td></td></tr>");
 
 while (rst.next()) {
 String e = rst.getString(1);
 
 out.println("<tr><td><a href='addcart.jsp?id="+rst.getInt(3)+"&name="+e+"&price="+rst.getDouble(2)+"'>Add to Cart</a></td>" +
-           "<td><a href='product.jsp?id="+rst.getInt(3)+"'><font color='#FFA000'>"+rst.getString(1)+"</font></a></td><td>"+currFormat.format(rst.getDouble(2))+"</td></tr>");
+           "<td><a href='product.jsp?id="+rst.getInt(3)+"'><font color='#FFA000'>"+rst.getString(1)+"</font></a></td><td>"+currFormat.format(rst.getDouble(2))+"</td>" +
+		   "<td><img src='img/Capture"+rst.getInt(3)+".PNG' width = '100' height = '100'></td></tr>");
 }
 out.println("</table>");
 // For each product create a link of the form

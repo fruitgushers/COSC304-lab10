@@ -37,7 +37,7 @@ while (rst.next()) {
 
 // TODO: If there is a productImageURL, display using IMG tag
 if (Integer.parseInt(productId) < 30) 
-    out.print("<img src='img/Capture"+productId+".PNG'>");
+    out.print("<img src='img/Capture"+productId+".PNG' width = '300' height = '300'>");
 
 out.print("</table>");	
 // TODO: Retrieve any image stored directly in database. Note: Call displayImage.jsp with product id as parameter.
