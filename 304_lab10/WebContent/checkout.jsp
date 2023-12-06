@@ -1,8 +1,9 @@
 <html>
 <head>
-<title>Ray's Grocery</title>
+<title>chocolate shop</title>
 </head>
 <body>
+    <%@ include file="header.jsp" %>
 
 <h1>Enter your customer id and password to complete the transaction:</h1>
 

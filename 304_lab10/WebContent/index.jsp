@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Ray's Grocery Main Page</title>
+        <title>Chocolate Shop Main Page</title>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <h1 align="center">Welcome to Chocolate Shop</h1>
 
 <h2 align="center"><a href="login.jsp">Login</a></h2>
